@@ -1,13 +1,13 @@
-// Import Express
 const express = require("express");
+const dotenv = require("dotenv");
 
-// Initialize app
+dotenv.config(); // Load variables from .env
+
 const app = express();
 
-// Define a test route
 app.get("/", (req, res) => {
-  res.send("We4 Backend is running");
+  res.send("StoryHub Backend is running");
 });
 
-// Start server on PORT 5000
-app.listen(5000, () => console.log("Server started on port 5000"));
+const PORT = process.env.PORT || 5000; // use .env PORT if available
+app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
