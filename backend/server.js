@@ -13,12 +13,18 @@ app.use(express.json()); // Parse incoming JSON requests
 
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("MongoDB connected"))
-  .catch((err) => console.error("DB Error:", err.message));
+  .then(() => {
+    console.log("MongoDB connected");
+    app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+  })
+  .catch((err) => {
+    console.error("DB Error:", err.message);
+  });
+
 
 // Test route
 app.get("/", (req, res) => {
-  res.send("StoryHub Backend is running");
+  res.send("We4 Backend is running");
 });
 
 const PORT = process.env.PORT || 5000;
