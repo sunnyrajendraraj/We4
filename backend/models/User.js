@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-// Created schema
+// Created schema with timestamps enabled
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -19,13 +19,8 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     minlength: 6
-  },
-
-  createdAt: {
-    type: Date,
-    default: Date.now
   }
-});
+}, { timestamps: true });
 
 // Created model from schema
 const User = mongoose.model('User', userSchema);
